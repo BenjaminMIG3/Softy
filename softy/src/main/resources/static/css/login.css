@@ -1,0 +1,51 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: green;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+}
+
+.login-box {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    color:white;
+    display: flex;              /* Ajouté */
+    flex-direction: column;     /* Ajouté */
+    align-items: center; 
+}
+
+.form-control {
+    box-sizing: border-box; /* Ajoute cette ligne */
+    width: 100%;
+}
+
+.login-box img {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.btn-custom {
+    border-radius: 10px;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: grey;
+}
+
+#footer {
+    background-color: transparent;
+}

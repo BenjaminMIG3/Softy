@@ -1,0 +1,37 @@
+
+<div th:fragment="header" class="header">
+    <script  th:src="@{/js/header.js}"></script>
+    <input type="hidden" id="user-session" th:value="${session.user != null }" />
+    <div class="text-white text-center py-4">
+        <div class="container">
+            <img th:src="@{/images/logo123Cash.png}" alt="Logo de Cash" class="img-fluid mb-3" style="max-width: 300px;">
+            <h1>Bienvenue sur Softy</h1>
+
+            <!-- Vérification si l'objet 'user' est présent dans la session -->
+            <div th:if="${session.user != null}">
+                <p>Bienvenue, <span th:text="${session.user.nom} + ' ' + ${session.user.prenom}">User</span> !</p>
+                <nav>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section1">Gestion des caisses</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#section2">Gestion des stocks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#contact">Comptabilité</a>
+                        </li>
+                        <li class="nav-item"></li>
+                            <a class="nav-link text-white" href="/api/user/deconnexion">Déconnexion</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div th:if="${session.user == null}">
+                <h3>>> <a th:href="@{/login}">Connexion / Inscription</a> <<</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
