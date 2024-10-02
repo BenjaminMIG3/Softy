@@ -1,0 +1,22 @@
+SOFTY DEV :
+
+		- Logiciel personnalisable 
+		- Commencer par des petites boites 
+		- Logiciel robuste
+		- Fonctionnalités : 
+					- Connexion / Déconnexion
+					- Gestion administrateur (rôle)
+					- Logiciel ou site web (connexion via SSO) ?
+					- Suivre les commandes 
+								(
+									livraison (suivi des différentes étapes de livraison), 
+									Gestion des stocks ( visualisation des quantités, ajouter, supprimer),
+									paiement,
+									commentaire sur les commandes
+								)
+
+					- Interface utilisateur (UI, UX, ergonomie)		
+					- Manuel utilisateur
+					
+			
+		- Deadline d'ici Décembre BETA, Mars BETA 2.0 

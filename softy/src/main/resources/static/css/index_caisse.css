@@ -1,0 +1,72 @@
+.header a {
+    color: inherit; 
+    text-decoration: none;
+}
+
+body {
+    background-color: green;
+    color: white; /* Texte blanc par défaut */
+}
+
+.custom-li {
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border-color: white; /* Couleur du contour blanche */
+}
+
+.header a:hover {
+    color: #fff; /* Couleur blanche au survol */
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.footer {
+    background-color: rgba(0, 0, 0, 0.2); /* Fond semi-transparent */
+    color: white; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+}
+
+.select-container {
+    border: 1px solid white; /* Bordure blanche */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 15px; /* Espacement interne */
+    margin: 10px auto; /* Marge entre les conteneurs et centrer horizontalement */
+    width: 80%; /* Largeur du conteneur */
+    text-align: center; /* Centrer le texte à l'intérieur du conteneur */
+}
+
+.form-select.custom-select {
+    background-color: green; /* Fond vert */
+    border: 1px solid white; /* Bordure blanche */
+    color: white; /* Couleur du texte en blanc */
+}
+
+.form-select.custom-select:hover,
+.form-select.custom-select:focus {
+    background-color: darkgreen; /* Change la couleur de fond au survol ou au focus */
+    color: white; /* Assure que le texte reste blanc */
+}
+
+.btn-primary {
+    background-color: white; /* Couleur de fond du bouton */
+    color: black; /* Couleur du texte du bouton */
+    border: none; /* Supprime la bordure par défaut */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Espacement interne */
+    margin-top: 20px; /* Marge supérieure pour espacer du contenu précédent */
+}
+
+.btn-primary:hover {
+    background-color: lightgrey; /* Couleur de fond au survol */
+}
+
+.custom-button {
+    background-color: inherit; 
+    border: solid 1px white; 
+    color: white; 
+    border-radius: 5px; /* Coins arrondis */
+    padding: 10px 20px; /* Espacement interne */
+}
+
+.custom-button:hover {
+    background-color:darkgreen; /* Changer la couleur de fond au survol */
+    color: white; /* Assurez-vous que le texte reste blanc */
+}

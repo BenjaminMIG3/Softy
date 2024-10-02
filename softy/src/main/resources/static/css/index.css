@@ -7,6 +7,11 @@ body {
     background-color: green;
 }
 
+.custom-li {
+    background-color: rgba(255, 255, 255, 0.1); /* Couleur de fond semi-transparente */
+    border-color: white; /* Couleur du contour blanche */
+}
+
 .header a:hover {
     color: #fff;
     text-decoration: underline;

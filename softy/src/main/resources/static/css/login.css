@@ -8,7 +8,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50%;
+    height: 100%; /* Ajusté pour remplir toute la hauteur */
 }
 
 .login-box {
@@ -17,16 +17,16 @@ body, html {
     border-radius: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
     max-width: 400px;
-    width: 100%;
+    width: 90%; /* Change à 90% pour les petits écrans */
     text-align: center;
-    color:white;
-    display: flex;              /* Ajouté */
-    flex-direction: column;     /* Ajouté */
+    color: white;
+    display: flex;              
+    flex-direction: column;     
     align-items: center; 
 }
 
 .form-control {
-    box-sizing: border-box; /* Ajoute cette ligne */
+    box-sizing: border-box; 
     width: 100%;
 }
 

@@ -1,37 +1,48 @@
-
 <div th:fragment="header" class="header">
-    <script  th:src="@{/js/header.js}"></script>
-    <input type="hidden" id="user-session" th:value="${session.user != null }" />
+    <script th:src="@{/js/header.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <div class="text-white text-center py-4">
-        <div class="container">
+        <div class="container-fluid">
             <img th:src="@{/images/logo123Cash.png}" alt="Logo de Cash" class="img-fluid mb-3" style="max-width: 300px;">
-            <h1>Bienvenue sur Softy</h1>
-
             <!-- Vérification si l'objet 'user' est présent dans la session -->
             <div th:if="${session.user != null}">
-                <p>Bienvenue, <span th:text="${session.user.nom} + ' ' + ${session.user.prenom}">User</span> !</p>
-                <nav>
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#section1">Gestion des caisses</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#section2">Gestion des stocks</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="#contact">Comptabilité</a>
-                        </li>
-                        <li class="nav-item"></li>
-                            <a class="nav-link text-white" href="/api/user/deconnexion">Déconnexion</a>
-                        </li>
-                    </ul>
+                <h3>Bienvenue, <span th:text="${session.user.nom} + ' ' + ${session.user.prenom}">User</span> !</h3>
+                <br>
+
+                <!-- Barre de navigation avec menu hamburger -->
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <!-- Bouton pour le menu sandwich (menu hamburger) -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Liens du menu -->
+                    <div class="collapse navbar-collapse" id="navbarContent">
+                        <ul class="navbar-nav w-100 d-flex justify-content-between"> <!-- Utiliser w-100 et d-flex pour occuper toute la largeur -->
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="caisse/menu">Gestion des caisses</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#section2">Gestion des stocks</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#contact">Gestion des commandes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#contact">Comptabilité</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="/api/user/deconnexion">Déconnexion</a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </div>
             <div th:if="${session.user == null}">
-                <h3>>> <a th:href="@{/login}">Connexion / Inscription</a> <<</h3>
+                <h3 class="text-white">
+                    >>> <a th:href="@{/login}" class="text-white">Connexion / Inscription</a> <<<
+                </h3>
             </div>
         </div>
     </div>
 </div>
-
-
