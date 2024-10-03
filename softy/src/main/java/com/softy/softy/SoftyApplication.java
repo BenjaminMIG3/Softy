@@ -13,8 +13,10 @@ public class SoftyApplication {
 	public static Modele monModel;
 
 	public static void main(String[] args) {
+
 		SoftyApplication.monModel = new Modele();
 		SpringApplication.run(SoftyApplication.class, args);
+	
 	}
 
 }

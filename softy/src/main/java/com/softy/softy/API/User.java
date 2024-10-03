@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.softy.softy.SoftyApplication;
 import com.softy.softy.Entite.Utilisateur;
 
-import ch.qos.logback.classic.pattern.Util;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -67,7 +66,6 @@ public class User {
     @GetMapping("/api/user/check-session")
     @ResponseBody
     public ResponseEntity<Void> checkSession(HttpSession session, Model model) {
-        System.out.println("Je cherche si le user est encore en session");
         if (session.getAttribute("user") == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Session expirée
         }
