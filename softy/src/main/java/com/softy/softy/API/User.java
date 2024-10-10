@@ -6,7 +6,6 @@ import org.json.JSONException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +20,7 @@ import jakarta.servlet.http.HttpSession;
 public class User {
     
     @PostMapping("/api/user/connexion")
-    public String tryUserConnexion(@RequestParam String login, @RequestParam String password, HttpSession session, Model model) {
+    public String tryUserConnexion(@RequestParam String login, @RequestParam String password, HttpSession session) {
 
         if (SoftyApplication.monModel.checkUserConnexion(login, password)) {
             // Ajouter l'utilisateur à la session
@@ -33,7 +32,7 @@ public class User {
     }
 
     @GetMapping("/api/user/deconnexion")
-    public String deconnexionUser(HttpSession session, Model model) {
+    public String deconnexionUser(HttpSession session) {
         session.invalidate();
         return "redirect:/";
     }
@@ -49,7 +48,7 @@ public class User {
                 (String) userData.get("login"), 
                 (String) userData.get("password"), 
                 (String) userData.get("email"), 
-                (String) userData.get("role")
+                SoftyApplication.monModel.getRoleByIdRole(Integer.parseInt((String)userData.get("role")))
             );
 
             if(SoftyApplication.monModel.insertIntoUser(newUser)){
@@ -65,7 +64,7 @@ public class User {
 
     @GetMapping("/api/user/check-session")
     @ResponseBody
-    public ResponseEntity<Void> checkSession(HttpSession session, Model model) {
+    public ResponseEntity<Void> checkSession(HttpSession session) {
         if (session.getAttribute("user") == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build(); // Session expirée
         }

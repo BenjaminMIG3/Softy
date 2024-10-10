@@ -1,0 +1,15 @@
+        /* CSS pour afficher le dropdown au survol */
+        .nav-item.dropdown:hover .dropdown-menu {
+            display: flex;
+        }
+        /* Optionnel : Afficher le dropdown par défaut (nécessaire pour le survol) */
+        .dropdown-menu {
+            display: none; /* Masquer le dropdown par défaut */
+        }
+        /* Cacher la navbar par défaut */
+        .collapsed {
+            transform: translateX(-100%); /* Retrait de la navbar */
+        }
+        #navbar {
+            transition: transform 0.3s ease; /* Transition pour l'animation */
+        }

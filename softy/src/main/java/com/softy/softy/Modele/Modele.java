@@ -5,7 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.softy.softy.Entite.Role;
 import com.softy.softy.Entite.Utilisateur;
+import com.softy.softy.Utils.Securite;
+
+import java.util.ArrayList;
 
 public class Modele {
     private static final String URL = "jdbc:mysql://localhost:8889/softy_caisse"; 
@@ -21,6 +26,58 @@ public class Modele {
     }
 
     /**
+     * Fonction qui retourne les roles présent dans la BDD
+     * @return ArrayList<Role>
+     */
+    public ArrayList<Role> getAllRole(){
+        try {
+            this.setConnexion();
+            String requete = "SELECT * FROM T_ROLE;";
+            this.preparedStatement = this.maConnexion.prepareStatement(requete);
+            ArrayList<Role> lesRoles = new ArrayList<Role>();
+            this.tabResSql = this.preparedStatement.executeQuery();
+            while(this.tabResSql.next()){
+                lesRoles.add(new Role(this.tabResSql.getInt("id"), this.tabResSql.getString("nom"), this.tabResSql.getInt("points")));
+            }
+            return lesRoles;
+        } catch (SQLException e) {
+            System.err.println(e);
+            return null;
+        } finally {
+            this.closeRessources();
+        }
+    }
+
+    /**
+     * Fonction qui retourne un objet Role via son id depuis la BDD
+     * @param idRole
+     * @return
+     */
+    public Role getRoleByIdRole(int idRole){
+        try {
+            this.setConnexion();
+            String requete = "SELECT * FROM T_ROLE WHERE id = ?;";
+            this.preparedStatement =  this.maConnexion.prepareStatement(requete);
+            this.preparedStatement.setInt(1, idRole);
+            this.tabResSql = this.preparedStatement.executeQuery();
+            if(this.tabResSql.next()){
+                return new Role(
+                    this.tabResSql.getInt("id"),
+                    this.tabResSql.getString("nom"),
+                    this.tabResSql.getInt("points")
+                );
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println(e);
+            return null;
+        } finally {
+            this.closeRessources();
+        }
+    }
+
+    /**
      * Fonction qui retourne true ou false si l'user existe dans la BDD
      * @param login
      * @param password
@@ -32,7 +89,7 @@ public class Modele {
             String requete = "SELECT COUNT(id) FROM T_SOFTY_UTILISATEUR WHERE login = ? AND password = ?;";
             this.preparedStatement = this.maConnexion.prepareStatement(requete);
             this.preparedStatement.setString(1, login);
-            this.preparedStatement.setString(2, password);
+            this.preparedStatement.setString(2, Securite.getSha256(password));
             this.tabResSql = this.preparedStatement.executeQuery();
             if(this.tabResSql.next()){
                 return this.tabResSql.getInt(1) > 0;
@@ -59,7 +116,7 @@ public class Modele {
             String requete = "SELECT * FROM T_SOFTY_UTILISATEUR WHERE login = ? AND password = ?;";
             this.preparedStatement = this.maConnexion.prepareStatement(requete);
             this.preparedStatement.setString(1, login);
-            this.preparedStatement.setString(2, password);
+            this.preparedStatement.setString(2, Securite.getSha256(password));
             this.tabResSql = this.preparedStatement.executeQuery();
             if(this.tabResSql.next()){
                 return new Utilisateur(
@@ -69,7 +126,7 @@ public class Modele {
                     tabResSql.getString("login"), 
                     tabResSql.getString("password"), 
                     tabResSql.getString("email"),
-                    tabResSql.getString("role")
+                    this.getRoleByIdRole(this.tabResSql.getInt("role"))
                     );
             } else {
                 return null;
@@ -95,9 +152,9 @@ public class Modele {
             this.preparedStatement.setString(1, user.getNom());
             this.preparedStatement.setString(2, user.getPrenom());
             this.preparedStatement.setString(3, user.getLogin());
-            this.preparedStatement.setString(4, user.getPassword());
+            this.preparedStatement.setString(4, Securite.getSha256(user.getPassword()));
             this.preparedStatement.setString(5, user.getEmail());
-            this.preparedStatement.setString(6, user.getRole());
+            this.preparedStatement.setInt(6, user.getRole().getId());
             return this.preparedStatement.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

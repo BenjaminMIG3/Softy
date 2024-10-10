@@ -4,49 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bienvenue sur Softy</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
 </head>
 <body>
 
     <!-- INCLUE LE HEADER ICI  -->
     <div th:insert="~{header :: header}"></div>
 
-    <!-- Section de description -->
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-md-8 offset-md-2 text-center">
-                <h2 class="text-white">Logiciel de gestion tout-en-un pour les entreprises</h2>
-                <p class="custom-li border p-3 mb-3 text-white">
-                    Notre logiciel web est conçu pour simplifier et automatiser les tâches essentielles de gestion au sein d'une entreprise.
-                    Il propose les fonctionnalités suivantes :
-                </p>
-                <ul class="list-unstyled">
-                    <li class="custom-li border p-3 mb-3 text-white">
-                        <strong>Gestion des caisses :</strong> Suivi en temps réel des transactions et des mouvements de fonds dans les différents points de vente. Analyse des flux financiers pour une meilleure visibilité.
-                    </li>
-                    <li class="custom-li border p-3 mb-3 text-white">
-                        <strong>Gestion des stocks :</strong> Suivi des stocks en temps réel avec alertes pour les niveaux critiques. Gestion des entrées et sorties de marchandises, ainsi que l'inventaire.
-                    </li>
-                    <li class="custom-li border p-3 mb-3 text-white">
-                        <strong>Gestion des commandes :</strong> Suivi des commandes clients et fournisseurs, de la création à la livraison. Traitement des bons de commande et gestion des retours.
-                    </li>
-                    <li class="custom-li border p-3 mb-3 text-white">
-                        <strong>Gestion de la comptabilité :</strong> Simplification des tâches comptables avec gestion des factures, devis, et rapprochements bancaires. Génération automatique de rapports financiers.
-                    </li>
-                </ul>
-                <p class="custom-li border p-3 mb-3 text-white">
-                    Ce logiciel centralise toutes les informations critiques pour une gestion fluide et efficace, avec une interface intuitive et accessible en ligne, à tout moment.
-                </p>
-            </div>
-        </div>
-    </div>
-
     <!-- INCLUE LE FOOTER ICI  -->
     <div th:insert="~{footer :: footer}"></div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script th:src="@{/js/index.js}"></script>
 </body>

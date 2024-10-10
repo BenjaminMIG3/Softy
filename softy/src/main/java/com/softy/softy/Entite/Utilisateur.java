@@ -6,8 +6,9 @@ public class Utilisateur implements Serializable{
 
     private static final long serialVersionUID = 1L;
     private transient String password,email;
-    private String nom, prenom, login, role;
-    private int id;
+    private String nom, prenom, login;
+    private int id; 
+    private Role role;
 
     /**
      * Constructeur pour récupération depuis la BDD
@@ -19,7 +20,7 @@ public class Utilisateur implements Serializable{
      * @param email
      * @param role 
      */
-    public Utilisateur(int id, String nom, String prenom, String login, String password, String email, String role) {
+    public Utilisateur(int id, String nom, String prenom, String login, String password, String email, Role role) {
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
@@ -38,7 +39,7 @@ public class Utilisateur implements Serializable{
      * @param email
      * @param role
      */
-    public Utilisateur(String nom, String prenom, String login, String password, String email, String role) {
+    public Utilisateur(String nom, String prenom, String login, String password, String email, Role role) {
         this.nom = nom;
         this.prenom = prenom;
         this.login = login;
@@ -76,10 +77,10 @@ public class Utilisateur implements Serializable{
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
     public int getId() {
@@ -92,6 +93,6 @@ public class Utilisateur implements Serializable{
     @Override
     public String toString() {
         return "Utilisateur [nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password=" + password
-                + ", email=" + email + ", role=" + role + ", id=" + id + "]";
+                + ", email=" + email + ", role=" + role.toString() + ", id=" + id + "]";
     }
 }

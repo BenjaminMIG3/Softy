@@ -3,7 +3,7 @@ SOFTY DEV TO DO LIST:
 	- Commencer par des petites boites 
 	- Logiciel robuste
 	- Fonctionnalités : 
-				- Connexion / Déconnexion / Création de comptes
+				- Connexion / Déconnexion / Création de comptes (DONE)
 				- Gestion administrateur (rôle [ADMIN, SUPERADMIN], droits, logs, bloquer un compte)
 				- Logiciel ou site web (connexion via SSO) ?
 				- Suivre les commandes 

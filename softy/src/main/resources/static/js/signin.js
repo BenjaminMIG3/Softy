@@ -60,3 +60,31 @@ document.getElementById('userForm').onsubmit = function(event) {
         }
     });
 };
+
+async function fetchRoles() {
+    try {
+        const response = await fetch('/api/get_all_role'); // Appel à l'API
+        const roles = await response.json(); // Récupérer la réponse JSON
+
+        console.log(roles);
+
+        const selectRole = document.getElementById('role'); // Sélectionner l'élément <select>
+
+        // Vider le select avant de le remplir
+        selectRole.innerHTML = '';
+
+        // Remplir le select avec les rôles récupérés
+        roles.forEach(role => {
+            const option = document.createElement('option');
+            option.value = role.id; // Met l'id du rôle comme valeur
+            option.textContent = role.nom; // Utilise le nom du rôle pour l'affichage
+            selectRole.appendChild(option);
+        });
+    } catch (error) {
+        console.error('Erreur lors de la récupération des rôles:', error);
+    }
+}
+
+// Appeler la fonction fetchRoles quand la page est chargée
+fetchRoles();
+// document.addEventListener('DOMContentLoaded', fetchRoles);
